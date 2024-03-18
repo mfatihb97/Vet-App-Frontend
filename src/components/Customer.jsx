@@ -38,7 +38,7 @@ const Customer = () => {
     console.log(response.data)
   })
   .catch(error=> console.log(error))
- },[])
+ },[customers])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

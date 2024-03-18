@@ -46,7 +46,7 @@ function Reports({ appointments }) {
         console.log("Gelen Rapor Verileri:", response.data);
       })
       .catch(error => console.error(error));
-  }, []);
+  }, [reports]);
 
   const handleEditClick = (report) => {
     setEditingReport(report);

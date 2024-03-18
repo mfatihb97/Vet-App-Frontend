@@ -30,7 +30,7 @@ function DoctorAvailability({ fetchDoctors }) {
         console.log("Gelen Veriler:", response.data);
       })
       .catch(error => console.error(error));
-  }, []);
+  }, [days]);
 
   const handleEditClick = (day) => {
     setEditingDay(day);

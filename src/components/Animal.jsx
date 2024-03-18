@@ -42,7 +42,7 @@ const Animal = ({ customers }) => {
         console.log("Gelen Veriler:", response.data);
       })
       .catch(error => console.error(error));
-  }, []);
+  }, [animals]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

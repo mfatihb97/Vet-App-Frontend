@@ -37,7 +37,7 @@ function Vaccination({ animals, vaccines, reports }) {
           console.log("Gelen Veriler:", response.data);
         })
         .catch(error => console.error(error));
-    }, []);
+    }, [vaccinations]);
 
   const handleEditClick = (vaccination) => {
     setEditingVaccination(vaccination);
