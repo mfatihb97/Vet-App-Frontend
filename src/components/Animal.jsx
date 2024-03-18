@@ -36,7 +36,7 @@ const Animal = ({ customers }) => {
   const [searchCustomerName, setSearchCustomerName] = useState('');
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_BASE_URL}/animals/get`)
+    axios.get(`https://vet-app-pmc9.onrender.com/animals/get`)
       .then(response => {
         setAnimals(response.data);
         console.log("Gelen Veriler:", response.data);
@@ -85,7 +85,7 @@ const Animal = ({ customers }) => {
 
   const handleUpdateAnimal = () => {
     const { id } = editingAnimal;
-    axios.put(`${process.env.REACT_APP_API_BASE_URL}/animals/update/${id}`, editAnimalData) 
+    axios.put(`https://vet-app-pmc9.onrender.com/animals/update/${id}`, editAnimalData) 
       .then(response => {
         console.log('Güncellenmiş Hayvan Verisi:', response.data);
         const updatedAnimals = animals.map(animal => (animal.id === id ? response.data : animal));
@@ -140,7 +140,7 @@ const Animal = ({ customers }) => {
   };
 
   const handleDeleteAnimal = (id) => {
-    axios.delete(`${process.env.REACT_APP_API_BASE_URL}/animals/delete/${id}`)
+    axios.delete(`https://vet-app-pmc9.onrender.com/animals/delete/${id}`)
       .then(() => {
         setAnimals(animals.filter(animal => animal.id !== id));
         message.success('Animal deleted successfully!');
@@ -151,7 +151,7 @@ const Animal = ({ customers }) => {
       });
   };
   const handleSearchAnimal = () => {
-    axios.get(`${process.env.REACT_APP_API_BASE_URL}/animals/getByName/${searchAnimalName}`)
+    axios.get(`https://vet-app-pmc9.onrender.com/animals/getByName/${searchAnimalName}`)
       .then(response => {
         const searchData = response.data; 
         setAnimals(searchData);
@@ -164,7 +164,7 @@ const Animal = ({ customers }) => {
   };
 
   const handleResetAnimal = () => {
-    axios.get(`${process.env.REACT_APP_API_BASE_URL}/animals/get`)
+    axios.get(`https://vet-app-pmc9.onrender.com/animals/get`)
       .then(response => {
         setAnimals(response.data);
       })
@@ -172,7 +172,7 @@ const Animal = ({ customers }) => {
   };
 
   const handleSearchCustomer = () => {
-    axios.get(`${process.env.REACT_APP_API_BASE_URL}/animals/getByCustomerName/${searchCustomerName}`)
+    axios.get(`https://vet-app-pmc9.onrender.com/animals/getByCustomerName/${searchCustomerName}`)
       .then(response => {
         const searchData = response.data;
         setAnimals(searchData);
@@ -185,7 +185,7 @@ const Animal = ({ customers }) => {
   };
 
   const handleResetCustomer = () => {
-    axios.get(`${process.env.REACT_APP_API_BASE_URL}/animals/get`)
+    axios.get(`https://vet-app-pmc9.onrender.com/animals/get`)
       .then(response => {
         setAnimals(response.data);
       })
