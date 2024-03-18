@@ -1,0 +1,22 @@
+.doctor-container {
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  gap: 200px;
+  margin-top: 20px;
+  margin-left: 250px;
+}
+.doctor-list{
+  margin-top:65px ;
+}
+
+.form-item{
+  width: 140px;
+}
+
+.form-button{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 10px;
+}
