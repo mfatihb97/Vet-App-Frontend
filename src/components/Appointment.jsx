@@ -339,7 +339,7 @@ function Appointment({ animals, fetchDoctors }) {
               value={newAppointment.appointmentDate ? moment(newAppointment.appointmentDate,'YYYY-MM-DD HH:mm'):null}
               onChange={(date, dateString) => handleInputChange({ target: { name: 'appointmentDate', value: dateString } })}
               name="appointmentDate"
-              style={{width:'120px'}}
+              style={{width:'120px',color:"black"}}
             />
         </Form.Item>
 
