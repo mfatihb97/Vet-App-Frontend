@@ -46,6 +46,15 @@ function Appointment({ animals, fetchDoctors }) {
       [name]: value,
     }));
   };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewAppointment((prevAnimal) => ({
+      ...prevAnimal,
+      [name]: value,
+    }));
+  };
+
   const handleEditClick = (appointment) => {
     setEditingAppointment(appointment);
     setEditAppointmentData({
@@ -327,8 +336,8 @@ function Appointment({ animals, fetchDoctors }) {
             <DatePicker
               showTime
               format="YYYY-MM-DD HH:mm"
-              value={editAppointmentData.appointmentDate ? moment(editAppointmentData.appointmentDate,'YYYY-MM-DD HH:mm'):null}
-              onChange={(date, dateString) => handleUpdateChange('appointmentDate', dateString)}
+              value={newAppointment.appointmentDate ? moment(newAppointment.appointmentDate,'YYYY-MM-DD HH:mm'):null}
+              onChange={(date, dateString) => handleInputChange({ target: { name: 'appointmentDate', value: dateString } })}
               name="appointmentDate"
               style={{width:'120px'}}
             />
