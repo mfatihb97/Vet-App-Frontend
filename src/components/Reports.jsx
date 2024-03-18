@@ -40,7 +40,7 @@ function Reports({ appointments }) {
   };
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_BASE_URL}/reports/get`)
+    axios.get(`https://vet-app-pmc9.onrender.com/reports/get`)
       .then(response => {
         setReports(response.data);
         console.log("Gelen Rapor Verileri:", response.data);
