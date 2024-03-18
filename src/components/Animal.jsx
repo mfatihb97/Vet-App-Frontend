@@ -117,7 +117,7 @@ const Animal = ({ customers }) => {
       message.warning('Please fill in all fields.');
       return;
     }
-    axios.post(`${process.env.REACT_APP_API_BASE_URL}/animals/add`, newAnimal)
+    axios.post(`https://vet-app-pmc9.onrender.com/animals/add`, newAnimal)
       .then(response => {
         setAnimals([...animals, response.data]);
         setNewAnimal({
