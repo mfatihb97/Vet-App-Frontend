@@ -33,7 +33,7 @@ function Doctor({ fetchDoctors }) {
     axios.get(`https://vet-app-pmc9.onrender.com/vets/get`)
       .then(response => setDoctors(response.data))
       .catch(error => console.error(error));
-  }, [doctors]);
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
