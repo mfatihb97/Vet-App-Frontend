@@ -166,33 +166,37 @@ function Vaccine() {
       <br />
       <Table columns={columns} dataSource={dataSource} />
       <br />
-      <Form onFinish={handleAddVaccine} className="flex flex-col justify-center items-center gap-6 w-full px-4">
+      <div className='flex flex-col items-center justify-center'>
         <h2 className="list-headers text-center mb-4">Add New Vaccine</h2>
-        <Form.Item label="Vaccine Name" name="vaccineName" className='w-full max-w-md'>
-          <Input
-            type="text"
-            name="vaccineName"
-            placeholder="Vaccine Name"
-            value={newVaccine.vaccineName}
-            onChange={handleInputChange}
-            className="w-full"
-          />
-        </Form.Item>
-        <Form.Item label="Vaccine Code" name="vaccineCode" className='w-full max-w-md'>
-          <Input
-            type="text"
-            name="vaccineCode"
-            placeholder="Vaccine Code"
-            value={newVaccine.vaccineCode}
-            onChange={handleInputChange}
-            className="w-full"
-          />
-        </Form.Item>
-        <Button className="add-vaccine-button bg-black text-white border border-black hover:bg-gray-800 transition duration-200" type="primary" htmlType="submit">
-          Add Vaccine
-        </Button>
-      </Form>
-
+        <br />
+        <Form onFinish={handleAddVaccine} className="flex flex-col justify-center items-center gap-6 w-full px-4">
+          <Form.Item label="Vaccine Name" name="vaccineName">
+            <Input
+              type="text"
+              name="vaccineName"
+              placeholder="Vaccine Name"
+              value={newVaccine.vaccineName}
+              onChange={handleInputChange}
+              className="w-full"
+              style={{ maxWidth: 120 }}
+            />
+          </Form.Item>
+          <Form.Item label="Vaccine Code" name="vaccineCode">
+            <Input
+              type="text"
+              name="vaccineCode"
+              placeholder="Vaccine Code"
+              value={newVaccine.vaccineCode}
+              onChange={handleInputChange}
+              className="w-full"
+              style={{ maxWidth: 120 }}
+            />
+          </Form.Item>
+          <Button type="primary" htmlType="submit" className='add-button' >
+            Add Vaccine
+          </Button>
+        </Form>
+      </div>
       <Modal
         className="Modal"
         isOpen={isModalOpen}
