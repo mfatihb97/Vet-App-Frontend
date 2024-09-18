@@ -234,7 +234,7 @@ const Customer = () => {
                 placeholder="Customer"
                 value={searchCustomerName}
                 onChange={(e) => setSearchCustomerName(e.target.value)}
-                style={{ width: "120px" }}
+                style={{ maxWidth: 100 }}
 
               />
               <Button type="primary" onClick={handleSearchCustomer} className='add-button'>Search</Button>
@@ -256,6 +256,7 @@ const Customer = () => {
                 placeholder="Name"
                 value={newCustomer.name}
                 onChange={handleInputChange}
+                style={{ maxWidth: 100 }}
               />
             </Form.Item>
             <Form.Item label="Phone" name="phone" className='form-item' >
@@ -265,6 +266,7 @@ const Customer = () => {
                 placeholder="Phone"
                 value={newCustomer.phone}
                 onChange={handleInputChange}
+                style={{ maxWidth: 100 }}
               />
             </Form.Item>
             <Form.Item label="Mail" name="mail" className='form-item' >
@@ -274,6 +276,7 @@ const Customer = () => {
                 placeholder="Mail@blabla.com"
                 value={newCustomer.mail}
                 onChange={handleInputChange}
+                style={{ maxWidth: 100 }}
               />
             </Form.Item>
           </div>
@@ -285,6 +288,7 @@ const Customer = () => {
                 placeholder="Address"
                 value={newCustomer.address}
                 onChange={handleInputChange}
+                style={{ maxWidth: 100 }}
               />
             </Form.Item>
             <Form.Item label="City" name="city" className='form-item'>
@@ -293,6 +297,7 @@ const Customer = () => {
                 name="city"
                 value={newCustomer.city}
                 onChange={(value) => handleInputChange({ target: { name: 'city', value } })}
+                style={{ maxWidth: 100 }}
               >
                 {cities.map(city => (
                   <Select.Option key={city} value={city}>

@@ -4,7 +4,6 @@ import Modal from 'react-modal';
 import { Table, Button, Form, Select, DatePicker, message, Input } from 'antd';
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons/lib/icons";
 import './modal.style.css'
-import './form.style.css'
 import moment from 'moment';
 
 function Appointment({ animals, fetchDoctors }) {
@@ -248,6 +247,7 @@ function Appointment({ animals, fetchDoctors }) {
         <Button type="primary" onClick={handleSearchAnimal} className='add-button' >Search</Button>
         <Button type="primary" onClick={handleResetAnimal} className='add-button'>Reset</Button>
       </div>
+      <hr />
       <br />
       <div className='lg:flex lg:flex-row lg:gap-4 lg:justify-center'>
         <Form.Item label="Doctor Name">

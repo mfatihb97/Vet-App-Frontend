@@ -3,76 +3,97 @@ import Animal from './components/Animal'
 import Customer from './components/Customer'
 import Doctor from './components/Doctor';
 import Home from './components/Home';
-import { BrowserRouter as Router, Routes, Route,useNavigate} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Vaccine from './components/Vaccine';
 import Vaccination from './components/Vaccination';
 import Appointment from './components/Appointment';
 import Reports from './components/Reports';
-import {Menu} from "antd";
-import {HomeOutlined,BaiduOutlined,DiscordOutlined,HeartOutlined,PushpinOutlined,ThunderboltOutlined,FormOutlined,EditOutlined  } from "@ant-design/icons/lib/icons"
+import { Menu, MenuOutlined } from "antd";
+import { HomeOutlined, BaiduOutlined, DiscordOutlined, HeartOutlined, PushpinOutlined, ThunderboltOutlined, FormOutlined, EditOutlined } from "@ant-design/icons/lib/icons"
 import "../src/App.css"
 
 
 function App() {
-  
+
   return (
-  <div className='flex-column'>
-    <div>
-      <Header/> 
+    <div className='flex-column'>
+      <div>
+        <Header />
+      </div>
+      <div className='main-container flex-column h-screen'>
+        <SideMenu />
+        <Content className="contents" />
+      </div>
     </div>
-    <div className='main-container flex-column h-screen'>
-        <SideMenu/>
-        <Content className="contents"/>
-    </div>
-  </div>  
   )
 }
 
-function Header(){
+function Header() {
   return (
-    <h1 style={{height:60,
-      backgroundColor:"lightblue",
-      color:"purple",display:"flex",
-      justifyContent:"center",
-      alignItems:"center",
-      fontSize:24,
-      fontWeight:"bold",
-      borderBottom:"1px solid #000"}}>Veteriner Application</h1> 
+    <h1 style={{
+      height: 60,
+      backgroundColor: "lightblue",
+      color: "purple", display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      fontSize: 24,
+      fontWeight: "bold",
+      borderBottom: "1px solid #000"
+    }}>Veteriner Application</h1>
   )
 }
 
-function SideMenu(){
+function SideMenu() {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false); // Menü açılma durumunu kontrol eden state
+
   return (
-    <div className='side-menu'>
-      <Menu 
-      onClick={({key})=>{
-        navigate(key)
-      }}
-      defaultSelectedKeys={[window.location.pathname]}
-      items={[{label:"Home",key:"/",icon:<HomeOutlined/>},
-      {label:"Animal",key:"/animals",icon:<BaiduOutlined />},
-      {label:"Customer",key:"/customers",icon:<DiscordOutlined />},
-      {label:"Doctor",key:"/doctors",icon:<HeartOutlined />},
-      {label:"Vaccine",key:"/vaccines",icon:<PushpinOutlined />},
-      {label:"Vaccination",key:"/vaccination",icon:<ThunderboltOutlined />},
-      {label:"Report",key:"/report",icon:<FormOutlined />},
-      {label:"Appointment",key:"/appointment",icon:<EditOutlined />},
-    ]}> </Menu>
-        
+    <div className="side-menu">
+      {/* Hamburger Icon for mobile */}
+      <div className="md:hidden p-4">
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="text-gray-500 focus:outline-none"
+        >
+          <MenuOutlined className="text-2xl" />
+        </button>
+      </div>
+
+      {/* Menu - hidden on mobile, shown on medium+ screens */}
+      <div className={`${menuOpen ? 'block' : 'hidden'} md:block`}>
+        <Menu
+          onClick={({ key }) => {
+            navigate(key); // Menüdeki item'a tıklandığında yönlendirme yap
+            setMenuOpen(false); // Mobilde menüyü kapat
+          }}
+          defaultSelectedKeys={[window.location.pathname]} // Varsayılan olarak seçili olan item
+          items={[
+            { label: "Home", key: "/", icon: <HomeOutlined /> },
+            { label: "Animal", key: "/animals", icon: <BaiduOutlined /> },
+            { label: "Customer", key: "/customers", icon: <DiscordOutlined /> },
+            { label: "Doctor", key: "/doctors", icon: <HeartOutlined /> },
+            { label: "Vaccine", key: "/vaccines", icon: <PushpinOutlined /> },
+            { label: "Vaccination", key: "/vaccination", icon: <ThunderboltOutlined /> },
+            { label: "Report", key: "/report", icon: <FormOutlined /> },
+            { label: "Appointment", key: "/appointment", icon: <EditOutlined /> },
+          ]}
+        />
+      </div>
     </div>
-  )
+  );
 }
+
+
 export default App
 
 function Content() {
-  const [customers,setCustomers]= useState([]);
-  const [fetchDoctors,setFetchDoctors]=useState([]);
-  const [vaccines,setVaccines]=useState([]);
-  const [animals,setAnimals]=useState([]);
-  const [appointments,setAppointments]=useState([])
-  const [reports,setReports]=useState([])
+  const [customers, setCustomers] = useState([]);
+  const [fetchDoctors, setFetchDoctors] = useState([]);
+  const [vaccines, setVaccines] = useState([]);
+  const [animals, setAnimals] = useState([]);
+  const [appointments, setAppointments] = useState([])
+  const [reports, setReports] = useState([])
 
   useEffect(() => {
     axios.get(`https://vet-app-pmc9.onrender.com/vets/get`)
@@ -128,7 +149,7 @@ function Content() {
       })
       .catch(error => console.log(error));
   }, [customers]);
-  
+
   useEffect(() => {
     axios.get(`https://vet-app-pmc9.onrender.com/vaccines/get`)
       .then(response => {
@@ -141,19 +162,19 @@ function Content() {
   }, [vaccines]);
 
   return (
-    
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/animals" element={<Animal customers={customers}/>} />
-        <Route path="/customers" element={<Customer/>} />
-        <Route path="/doctors" element={<Doctor fetchDoctors={fetchDoctors} />}/>
-        <Route path="/vaccines" element={<Vaccine/>}></Route>
-        <Route path="/vaccination" element={<Vaccination animals={animals} vaccines={vaccines} reports={reports}/>}></Route>
-        <Route path="/appointment" element={<Appointment fetchDoctors={fetchDoctors} animals={animals} /> }></Route>
-        <Route path="/report" element={<Reports appointments={appointments}/>}></Route>
-      </Routes>
-    
+
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/animals" element={<Animal customers={customers} />} />
+      <Route path="/customers" element={<Customer />} />
+      <Route path="/doctors" element={<Doctor fetchDoctors={fetchDoctors} />} />
+      <Route path="/vaccines" element={<Vaccine />}></Route>
+      <Route path="/vaccination" element={<Vaccination animals={animals} vaccines={vaccines} reports={reports} />}></Route>
+      <Route path="/appointment" element={<Appointment fetchDoctors={fetchDoctors} animals={animals} />}></Route>
+      <Route path="/report" element={<Reports appointments={appointments} />}></Route>
+    </Routes>
+
   )
-} 
+}
 
 

@@ -196,7 +196,75 @@ function Doctor({ fetchDoctors }) {
         <h1 className='list-headers'>Doctor List</h1>
         <br />
         <Table columns={doctorColumns} dataSource={doctorDataSource} />
-
+        <br />
+        <div className='flex-column items-center justify-center'>
+          <h2 className='list-headers'>Add New Doctor</h2>
+          <br />
+          <Form style={{ display: "flex", gap: "50px" ,justifyContent:'center',alignItems:'center'}} onFinish={handleAddDoctor} className="addDoctorForm">
+            <div>
+              <Form.Item label="Name" name="name" className="form-item">
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={newDoctor.name}
+                  onChange={handleInputChange}
+                  style={{ maxWidth: 100 }}
+                />
+              </Form.Item>
+              <Form.Item label="Phone" name="phone" className="form-item">
+                <Input
+                  type="text"
+                  name="phone"
+                  placeholder="Phone"
+                  value={newDoctor.phone}
+                  onChange={handleInputChange}
+                  style={{ maxWidth: 100 }}
+                />
+              </Form.Item>
+              <Form.Item label="Mail" name="mail" className="form-item">
+                <Input
+                  type="text"
+                  name="mail"
+                  placeholder="Mail"
+                  value={newDoctor.mail}
+                  onChange={handleInputChange}
+                  style={{ maxWidth: 100 }}
+                />
+              </Form.Item>
+            </div>
+            <div>
+              <Form.Item label="Address" name="address" className="form-item">
+                <Input
+                  type="text"
+                  name="address"
+                  placeholder="Address"
+                  value={newDoctor.address}
+                  onChange={handleInputChange}
+                  style={{ maxWidth: 100 }}
+                />
+              </Form.Item>
+              <Form.Item label="City" name="city" className="form-item">
+                <Select
+                  className='inputField'
+                  name="city"
+                  value={newDoctor.city}
+                  onChange={(value) => handleInputChange({ target: { name: 'city', value } })}
+                  style={{ maxWidth: 100 }}
+                >
+                  {cities.map(city => (
+                    <Select.Option key={city} value={city}>
+                      {city}
+                    </Select.Option>
+                  ))}
+                </Select>
+              </Form.Item>
+              <Button type="primary" htmlType="submit" className='add-button'>
+                Add Doctor
+              </Button>
+            </div>
+          </Form>
+        </div>
         <Modal
           className="Modal"
           isOpen={isModalOpen}
@@ -263,70 +331,6 @@ function Doctor({ fetchDoctors }) {
             </Form>
           </div>
         </Modal>
-        <br />
-        <div className='flex-column items-center justify-center'>
-          <h2 className='list-headers'>Add New Doctor</h2>
-          <br />
-          <Form style={{ display: "flex", gap: "50px" ,justifyContent:'center',alignItems:'center'}} onFinish={handleAddDoctor} className="addDoctorForm">
-            <div>
-              <Form.Item label="Name" name="name" className="form-item">
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={newDoctor.name}
-                  onChange={handleInputChange}
-                />
-              </Form.Item>
-              <Form.Item label="Phone" name="phone" className="form-item">
-                <Input
-                  type="text"
-                  name="phone"
-                  placeholder="Phone"
-                  value={newDoctor.phone}
-                  onChange={handleInputChange}
-                />
-              </Form.Item>
-              <Form.Item label="Mail" name="mail" className="form-item">
-                <Input
-                  type="text"
-                  name="mail"
-                  placeholder="Mail"
-                  value={newDoctor.mail}
-                  onChange={handleInputChange}
-                />
-              </Form.Item>
-            </div>
-            <div>
-              <Form.Item label="Address" name="address" className="form-item">
-                <Input
-                  type="text"
-                  name="address"
-                  placeholder="Address"
-                  value={newDoctor.address}
-                  onChange={handleInputChange}
-                />
-              </Form.Item>
-              <Form.Item label="City" name="city" className="form-item">
-                <Select
-                  className='inputField'
-                  name="city"
-                  value={newDoctor.city}
-                  onChange={(value) => handleInputChange({ target: { name: 'city', value } })}
-                >
-                  {cities.map(city => (
-                    <Select.Option key={city} value={city}>
-                      {city}
-                    </Select.Option>
-                  ))}
-                </Select>
-              </Form.Item>
-              <Button type="primary" htmlType="submit" className='add-button'>
-                Add Doctor
-              </Button>
-            </div>
-          </Form>
-        </div>
       </div>
       <DoctorAvailability fetchDoctors={fetchDoctors} />
     </div>

@@ -283,13 +283,14 @@ const Animal = ({ customers }) => {
               placeholder="Animal"
               value={searchAnimalName}
               onChange={(e) => setSearchAnimalName(e.target.value)}
-              style={{ width: "120px" }}
-
+              style={{ maxWidth: 100 }}
             />
             <Button type="primary" onClick={handleSearchAnimal} className='add-button'>Search</Button>
             <Button type="primary" onClick={handleResetAnimal} className='add-button'>Reset</Button>
           </div>
         </Form.Item>
+        <hr />
+        <br />
         <Form.Item label="Customer Name" style={{ display: 'flex', gap: '10px', marginBottom: '10px', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ display: 'flex', gap: '10px' }}>
             <Input
@@ -318,6 +319,7 @@ const Animal = ({ customers }) => {
                 placeholder="Name"
                 value={newAnimal.name}
                 onChange={handleInputChange}
+                style={{ maxWidth: 100 }}
               />
             </Form.Item>
             <Form.Item label="Species" name="species" className="form-item">
@@ -327,6 +329,8 @@ const Animal = ({ customers }) => {
                 placeholder="Species"
                 value={newAnimal.species}
                 onChange={handleInputChange}
+                style={{ maxWidth: 100 }}
+
               />
             </Form.Item>
             <Form.Item label="Breed" name="breed" className="form-item">
@@ -336,6 +340,7 @@ const Animal = ({ customers }) => {
                 placeholder="breed"
                 value={newAnimal.breed}
                 onChange={handleInputChange}
+                style={{ maxWidth: 100 }}
               />
             </Form.Item>
             <Form.Item label="Gender" name="gender" className="form-item">
@@ -357,6 +362,7 @@ const Animal = ({ customers }) => {
                 placeholder="colour"
                 value={newAnimal.colour}
                 onChange={handleInputChange}
+                style={{ maxWidth: 100 }}
 
               />
             </Form.Item>
@@ -366,8 +372,7 @@ const Animal = ({ customers }) => {
                 onChange={(date, dateString) => handleInputChange({ target: { name: 'birthday', value: dateString } })}
                 placeholder="Select Birthday"
                 format="YYYY-MM-DD"
-                style={{ width: "140px" }}
-
+                style={{ maxWidth: 100 }}
               />
             </Form.Item>
             <Form.Item label="Owner" name="customer" className="form-item">
@@ -376,6 +381,7 @@ const Animal = ({ customers }) => {
                 placeholder="Select Owner"
                 value={newAnimal.customer}
                 onChange={(value) => handleOwnerChange({ target: { name: 'customer', value } })}
+                style={{ maxWidth: 100 }}
 
               >
                 <Select.Option value="">Select Owner</Select.Option>

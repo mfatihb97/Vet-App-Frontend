@@ -1,8 +1,6 @@
 .main-container{
     display: flex;
 }
-
-
 .contents{
     display: flex;
     justify-content: center;

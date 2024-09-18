@@ -237,13 +237,12 @@ function Vaccination({ animals, vaccines, reports }) {
     },
   ];
   return (
-    <div className='container flex-column items-center jutify-center px-8 py-8'>
+    <div className='container px-8 py-8'>
+      <h1 className='list-headers'>Vaccination Records</h1>
       <br />
-      <div style={{ flexDirection: 'column', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
-        <h1 className='list-headers'>Vaccination Records</h1>
-        <br />
+      <div className='lg:flex lg:flex-row lg:gap-4 lg:justify-center md:gap-4 sm:gap-4'>
         <Form.Item label="Animal Name">
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <div >
             <Input
               placeholder="Animal"
               value={searchAnimalName}
@@ -256,7 +255,9 @@ function Vaccination({ animals, vaccines, reports }) {
           </div>
         </Form.Item>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
+      <hr />
+      <br />
+      <div className='lg:flex lg:flex-row lg:gap-4 lg:justify-center md:gap-4 sm:gap-4'>
         <Form.Item label="Protection Start">
           <DatePicker
             placeholder="Start Date"
@@ -317,7 +318,6 @@ function Vaccination({ animals, vaccines, reports }) {
               ))}
             </Select>
           </Form.Item>
-
           <Form.Item className="form-item" label="Vaccine" name="vaccine">
             <Select
               className="vaccineSelect w-full"
@@ -332,7 +332,6 @@ function Vaccination({ animals, vaccines, reports }) {
               ))}
             </Select>
           </Form.Item>
-
           <Form.Item className="form-item" label="Report" name="report">
             <Select
               className="reportSelect w-full"
